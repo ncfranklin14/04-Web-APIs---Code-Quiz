@@ -1,7 +1,49 @@
 // Show start quiz button
 // Click start button to being game
     // Start timer 
-// Display 1st question with 4 answer options
+// Display 1st question with 4 answer options in list
+var questionsArray=[
+    {
+       question: "What is the tallest mountain in the world?",
+       answer1: "Mount Rainier",
+       answer2: "Mount Everest",
+       answer3: "Mount Saint Helens",
+       answer4: "Denali",
+       correctAnswer:"Mount Everest"
+    },
+    {
+       question: "What country has the most mountain ranges?",
+       answer1: "Bhutan",
+       answer2: "United States",
+       answer3: "Nepal",
+       answer4: "Antartica",
+       correctAnswer:"Bhutan"
+    },
+    {
+        question: "What is the tallest mountain in Washington?",
+        answer1: "Glacier Peak",
+        answer2: "Mount Baker",
+        answer3: "Mount Adams",
+        answer4: "Mount Rainier",
+        correctAnswer:"Mount Rainier"
+     },
+     {
+        question: "What is the most climbed mountain in the US?",
+        answer1: "Mount Monadnock",
+        answer2: "Mount Hood",
+        answer3: "Mount Si",
+        answer4: "Mount Washington",
+        correctAnswer:"Mount Monadnock"
+     },
+     {
+        question: "Who has climbed all seven summits?",
+        answer1: "Alison Levine",
+        answer2: "Conrad Anker",
+        answer3: "Me!",
+        answer4: "Jon Krakauer",
+        correctAnswer:"Alison Levine"
+    }
+]
     // If timer runs out, game is over
 // User clicks answer
     // If answer is correct, display "Correct" and move to question 2
