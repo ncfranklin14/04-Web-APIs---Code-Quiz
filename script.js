@@ -1,6 +1,8 @@
+
+var title = document.querySelector("#title")
+
 // Show start quiz button
-// Click start button to being game
-    // Start timer 
+
 // Display 1st question with 4 answer options in list
 var questionsArray=[
     {
@@ -44,7 +46,42 @@ var questionsArray=[
         correctAnswer:"Alison Levine"
     }
 ]
+var timer ;
+var timerCount = 15 * questionsArray.length;
+
+function startTimer() {
+    // Sets timer
+    timer = setInterval(function() {
+      timerCount--;
+      document.querySelector(".timer-count").textContent = timerCount;
+    //   if (timerCount >= 0) {
+    //     // Tests if win condition is met
+    //     if (isWin && timerCount > 0) {
+    //       // Clears interval and stops timer
+    //       clearInterval(timer);
+    //       winGame();
+    //     }
+    //   }
+      // Tests if time has run out
+      if (timerCount === 0) {
+        // Clears interval
+        clearInterval(timer);
+        // loseGame();
+      }
+    }, 1000);
+  }
+  
     // If timer runs out, game is over
+// Click start button to begin game
+    var srtButton = document.querySelector("#start") 
+    srtButton.addEventListener("click", function() {
+        startTimer();
+    srtButton.style.display = "none";
+    title.style.display = "none";
+    });
+
+    // Start timer 
+    
 // User clicks answer
     // If answer is correct, display "Correct" and move to question 2
     // If answer is wrong, display "Wrong" and move to question 3
