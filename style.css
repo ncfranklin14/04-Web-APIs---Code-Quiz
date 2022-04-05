@@ -67,3 +67,11 @@ section {
     justify-content: flex-end;
 
 }
+
+.hidden {
+    display: none;
+}
+
+.questions {
+    list-style-type: none;
+}

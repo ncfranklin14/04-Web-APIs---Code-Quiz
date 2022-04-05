@@ -1,9 +1,11 @@
 
 var title = document.querySelector("#title")
+var currentIndex = 0
+var question = document.querySelector("#question")
+var answer = document.querySelector(".answer")
 
 // Show start quiz button
 
-// Display 1st question with 4 answer options in list
 var questionsArray=[
     {
        question: "What is the tallest mountain in the world?",
@@ -72,16 +74,29 @@ function startTimer() {
   }
   
     // If timer runs out, game is over
-// Click start button to begin game
+// Click start button to begin game    
+    // Start timer 
     var srtButton = document.querySelector("#start") 
     srtButton.addEventListener("click", function() {
         startTimer();
     srtButton.style.display = "none";
     title.style.display = "none";
+    question.style.display = "block";
+    answer.style.display = "block";
     });
 
-    // Start timer 
-    
+// Display 1st question with 4 answer options in list
+    myQuestions  = JSON.stringify(questionsArray);
+
+    function displayQuestions () {
+        var question = questionsArray [currentIndex]
+        var currentQuestion = questionsArray.question
+
+        currentQuestion.value = question
+    }
+
+
+
 // User clicks answer
     // If answer is correct, display "Correct" and move to question 2
     // If answer is wrong, display "Wrong" and move to question 3
