@@ -1,8 +1,14 @@
 
 var title = document.querySelector("#title")
 var currentIndex = 0
-var question = document.querySelector("#question")
+var questions = document.querySelector(".questions")
 var answer = document.querySelector(".answer")
+var answer1 = document.querySelector(".bttn1")
+var answer2 = document.querySelector(".bttn2")
+var answer3 = document.querySelector(".bttn3")
+var answer4 = document.querySelector(".bttn4")
+var feedback = document.querySelector("#feedback")
+
 
 // Show start quiz button
 
@@ -81,23 +87,46 @@ function startTimer() {
         startTimer();
     srtButton.style.display = "none";
     title.style.display = "none";
-    question.style.display = "block";
-    answer.style.display = "block";
+    questions.classList.remove ("hidden");
+    displayQuestions();
     });
 
 // Display 1st question with 4 answer options in list
-    myQuestions  = JSON.stringify(questionsArray);
+    // myQuestions  = JSON.stringify(questionsArray);
 
     function displayQuestions () {
-        var question = questionsArray [currentIndex]
-        var currentQuestion = questionsArray.question
-
-        currentQuestion.value = question
+        var currentQuestion = questionsArray [currentIndex]
+        question.innerText = currentQuestion.question
+        answer1.innerText = currentQuestion.answer1
+        answer2.innerText = currentQuestion.answer2
+        answer3.innerText = currentQuestion.answer3
+        answer4.innerText = currentQuestion.answer4
     }
 
 
 
 // User clicks answer
+    questions.addEventListener("click", function(event) {
+    if (event.target.nodeName !== "BUTTON"){
+        return
+    }
+    var userChoice = event.target.firstChild.data
+    var correctChoice = questionsArray [currentIndex].correctAnswer
+    if(userChoice === correctChoice) {
+        console.log("right");
+        feedback.textContent = "Right!"
+
+    } else {
+        console.log("wrong");
+        timerCount = timerCount -3
+        feedback.textContent = "Wrong!"
+    }
+    currentIndex++
+    displayQuestions()
+    })
+    
+
+
     // If answer is correct, display "Correct" and move to question 2
     // If answer is wrong, display "Wrong" and move to question 3
 // Run loop for all 5 questions
