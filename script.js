@@ -8,6 +8,7 @@ var answer2 = document.querySelector(".bttn2")
 var answer3 = document.querySelector(".bttn3")
 var answer4 = document.querySelector(".bttn4")
 var feedback = document.querySelector("#feedback")
+var gameOver = document.querySelector(".gameover")
 
 
 // Show start quiz button
@@ -62,24 +63,15 @@ function startTimer() {
     timer = setInterval(function() {
       timerCount--;
       document.querySelector(".timer-count").textContent = timerCount;
-    //   if (timerCount >= 0) {
-    //     // Tests if win condition is met
-    //     if (isWin && timerCount > 0) {
-    //       // Clears interval and stops timer
-    //       clearInterval(timer);
-    //       winGame();
-    //     }
-    //   }
-      // Tests if time has run out
-      if (timerCount === 0) {
-        // Clears interval
+      if (timerCount <= 0) {
+
         clearInterval(timer);
-        // loseGame();
+
       }
     }, 1000);
   }
   
-    // If timer runs out, game is over
+
 // Click start button to begin game    
     // Start timer 
     var srtButton = document.querySelector("#start") 
@@ -92,7 +84,6 @@ function startTimer() {
     });
 
 // Display 1st question with 4 answer options in list
-    // myQuestions  = JSON.stringify(questionsArray);
 
     function displayQuestions () {
         var currentQuestion = questionsArray [currentIndex]
@@ -103,13 +94,30 @@ function startTimer() {
         answer4.innerText = currentQuestion.answer4
     }
 
-
+    function endGame () {
+        gameOver.classList.remove ("hidden")
+        questions.style.display = "none"
+    }
+//  in endgame function show that div that contacin input for initials
+// in end game function hide div with questions 
+// define a var at top for score
+// add or subtract points within conditional statement
+// set text.content of the new div to the value of the score varible
+// hit submit 
+// onclick to local storage
 
 // User clicks answer
     questions.addEventListener("click", function(event) {
     if (event.target.nodeName !== "BUTTON"){
         return
     }
+    if (currentIndex > questionsArray.length) {
+        clearInterval(timer);
+        endGame();
+    };
+    
+
+
     var userChoice = event.target.firstChild.data
     var correctChoice = questionsArray [currentIndex].correctAnswer
     if(userChoice === correctChoice) {
